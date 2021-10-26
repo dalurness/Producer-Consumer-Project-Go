@@ -49,8 +49,7 @@ func consumer(consumer_channel chan [5]int, producer_channel chan int) {
 	var bucket_to_send int = 0
 	for message := range producer_channel {
 		var bucket_num int = message / BUCKET_SIZE
-		//fmt.Println(bucket_num)
-		//fmt.Println("map:", buckets)
+
 		if val, ok := buckets[bucket_num]; ok {
 			val.Items[message%BUCKET_SIZE] = message
 			val.Inserted++
